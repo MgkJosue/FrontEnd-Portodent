@@ -1,4 +1,7 @@
 /* PacienteForm.css */
+.paciente-form-container {
+  display: flex;
+}
 .paciente-form {
     max-width: 400px;
     margin: 0 auto;

@@ -24,6 +24,9 @@ export default function Principal({ onViewChange }) {
           <li>
             <button onClick={() => handleViewChange('consultaForm')}>CONSULTAS</button>
           </li>
+          <li>
+            <button onClick={() => handleViewChange('soporteTecnico')}>SOPORTE TECNICO</button>
+          </li>
         </ul>
       </div>
       
