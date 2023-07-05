@@ -12,9 +12,9 @@ export default function SoporteTecnico({ onViewChange }) {
       <pre>NOMBRE: ANGEL IGNACIO VELEZ MORALES</pre>
       <pre>TELEFONO: 0992187805</pre>
       <pre>CORRE0: angelchino757@gmail.com </pre>
-      <pre>NOMBRE: JOSUE ALVAREZ</pre>
-      <pre>TELEFONO: 0123456789</pre>
-      <pre> CORRE0: EJEMPLO@gmail.com</pre>
+      <pre>NOMBRE: JOSUE ISRAEL ALVAREZ GALARZA</pre>
+      <pre>TELEFONO: 0962737556</pre>
+      <pre>CORRE0: josue.alvarez9@hotmail.com</pre>
 
       <button onClick={() => handleViewChange('principal')}>INICIO</button>
     </div>

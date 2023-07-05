@@ -1,5 +1,5 @@
+// Principal.js
 import React, { useState } from 'react';
-import axios from 'axios';
 import '../styles/Principal.css';
 import logo from '../imagenes/portodentB7B7B7-300x129.png'; // Ruta de la imagen del logo
 
@@ -19,6 +19,9 @@ export default function Principal({ onViewChange }) {
             <button onClick={() => handleViewChange('pacienteForm')}>PACIENTES</button>
           </li>
           <li>
+            <button onClick={() => handleViewChange('buscarPaciente')}>BUSCAR PACIENTE</button>
+          </li>
+          <li>
             <button onClick={() => handleViewChange('historiaClinicaForm')}>HISTORIAS CLINICAS</button>
           </li>
           <li>
@@ -29,7 +32,6 @@ export default function Principal({ onViewChange }) {
           </li>
         </ul>
       </div>
-      
     </div>
   );
 }

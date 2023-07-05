@@ -4,6 +4,7 @@ import HistoriaClinicaForm from './views/HistoriaClinica.js';
 import ConsultaForm from './views/ConsultaForm.js';
 import Principal from './views/Principal.js';
 import SoporteTecnico from './views/SoporteTecnico.js';
+import BuscarPaciente from './views/BuscarPaciente.js';
 
 function App() {
   const [currentView, setCurrentView] = useState('principal');
@@ -17,6 +18,7 @@ function App() {
       {currentView === 'principal' && <Principal onViewChange={handleViewChange} />}
       {currentView === 'pacienteForm' && <PacienteForm onViewChange={handleViewChange}/>}
       {currentView === 'historiaClinicaForm' && <HistoriaClinicaForm onViewChange={handleViewChange}/>}
+      {currentView === 'buscarPaciente' && <BuscarPaciente onViewChange={handleViewChange}/>}	
       {currentView === 'consultaForm' && <ConsultaForm onViewChange={handleViewChange}/>}
       {currentView === 'soporteTecnico' && <SoporteTecnico onViewChange={handleViewChange}/>}
     </div>
