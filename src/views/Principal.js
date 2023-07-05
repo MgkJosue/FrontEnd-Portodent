@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/Principal.css';
 import logo from '../imagenes/portodentB7B7B7-300x129.png'; // Ruta de la imagen del logo
+import { Link } from 'react-router-dom';
 
-export default function Principal({ onViewChange }) {
-  const handleViewChange = (view) => {
-    onViewChange(view);
-  };
-
+export default function Principal() {
   return (
     <div className="wrapper">
       
       <div className="sidebar">
         <ul>
+        <Link to="/paciente-form">
           <li>
-            <button onClick={() => handleViewChange('pacienteForm')}>PACIENTES</button>
+            PACIENTES
           </li>
+          </Link>
+          <Link to="/buscar-paciente">
           <li>
-            <button onClick={() => handleViewChange('buscarPaciente')}>BUSCAR PACIENTE</button>
-          </li>
+            BUSCAR PACIENTE
+          </li></Link>
+          <Link to="/historia-clinica-form">
           <li>
-            <button onClick={() => handleViewChange('historiaClinicaForm')}>HISTORIAS CLINICAS</button>
+            HISTORIAS CLINICAS
           </li>
+          </Link>
+          <Link to="/consulta-form">
           <li>
-            <button onClick={() => handleViewChange('consultaForm')}>CONSULTAS</button>
+            CONSULTAS
           </li>
+          </Link>
+          <Link to="/soporte-tecnico">
           <li>
-            <button onClick={() => handleViewChange('soporteTecnico')}>SOPORTE TECNICO</button>
+           SOPORTE TECNICO
           </li>
+          </Link>
         </ul>
       </div>
 
@@ -35,8 +41,7 @@ export default function Principal({ onViewChange }) {
           <img src={logo} alt="Logo" className="logo" />
         </div>
       </div>
-      <br>
-      </br>
+      <br/>
     </div>
   );
 }

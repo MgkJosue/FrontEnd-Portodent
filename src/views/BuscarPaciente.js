@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/BuscarPaciente.css';
+import { Link } from 'react-router-dom';
 
 export default function BuscarPaciente({ onViewChange }) {
   const handleViewChange = (view, pacienteId) => {
@@ -9,7 +10,7 @@ export default function BuscarPaciente({ onViewChange }) {
 
   const [formData, setFormData] = useState({
     search: '',
-    patientsPerPage: 10,
+    patientsPerPage: 5,
   });
 
   const [pacientes, setPacientes] = useState([]);
@@ -111,8 +112,7 @@ export default function BuscarPaciente({ onViewChange }) {
           <button onClick={() => paginate(currentPage + 1)}>Siguiente</button>
         )}
       </div>
-
-      <button onClick={() => handleViewChange('principal')}>REGRESAR</button>
+       <Link to="/"><button>REGRESAR</button></Link>
     </div>
   );
 }
