@@ -3,7 +3,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/PacienteForm.css';
 
-export default function PacienteForm() {
+
+export default function PacienteForm({ onViewChange }) {
+
+  //
+  const handleViewChange = (view) => {
+    onViewChange(view);
+  };
+
+
   const [formData, setFormData] = useState({
     Cedula: '',
     Nombre: '',
@@ -15,9 +23,11 @@ export default function PacienteForm() {
     Email: ''
   });
 
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +40,7 @@ export default function PacienteForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="paciente-form">
+    <><form onSubmit={handleSubmit} className="paciente-form">
       <h2>Registrar Paciente</h2>
       {Object.keys(formData).map((key) => (
         <div className="input-group" key={key}>
@@ -39,6 +49,13 @@ export default function PacienteForm() {
         </div>
       ))}
       <button type="submit">Enviar</button>
-    </form>
+
+    </form><button onClick={() => handleViewChange('principal')}>REGRESAR</button></>
   );
+
+  
 }
+
+
+
+

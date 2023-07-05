@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/ConsultaForm.css';
 
-export default function ConsultaForm() {
+export default function ConsultaForm({ onViewChange }) {
+  //
+  const handleViewChange = (view) => {
+    onViewChange(view);
+  };
+
+  
   const [formData, setFormData] = useState({
     ID_HistoriaC: '',
     FechaConsulta: '',
@@ -35,7 +41,7 @@ export default function ConsultaForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="consulta-form">
+    <><form onSubmit={handleSubmit} className="consulta-form">
       <h2>Crear Consulta</h2>
       <div className="input-group">
         <label htmlFor="ID_HistoriaC">ID de Historia Clínica</label>
@@ -90,6 +96,6 @@ export default function ConsultaForm() {
         <input type="text" name="MotivoC" id="MotivoC" onChange={handleChange} value={formData.MotivoC} />
       </div>
       <button type="submit">Enviar</button>
-    </form>
+    </form><button onClick={() => handleViewChange('principal')}>REGRESAR</button></>
   );
 }

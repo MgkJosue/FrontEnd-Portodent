@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/HistoriaClinica.css';
 
-export default function HistoriaClinicaForm() {
+export default function HistoriaClinicaForm({ onViewChange }) {
+
+  //
+  const handleViewChange = (view) => {
+    onViewChange(view);
+  };
+
   const [formData, setFormData] = useState({
     ID_Paciente: '',
   });
@@ -23,13 +29,14 @@ export default function HistoriaClinicaForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="historia-form">
+    <><form onSubmit={handleSubmit} className="historia-form">
       <h2>Crear Historia Clínica</h2>
       <div className="input-group">
         <label htmlFor="ID_Paciente">ID del Paciente</label>
         <input type="text" name="ID_Paciente" id="ID_Paciente" onChange={handleChange} value={formData.ID_Paciente} />
       </div>
       <button type="submit">Enviar</button>
-    </form>
+
+    </form><button onClick={() => handleViewChange('principal')}>REGRESAR</button></>
   );
 }
