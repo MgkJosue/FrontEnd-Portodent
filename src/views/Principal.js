@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/Principal.css'; // Asegúrate de tener el archivo de estilos Principal.css correspondiente
+import '../styles/Principal.css';
+import logo from '../imagenes/portodentB7B7B7-300x129.png'; // Ruta de la imagen del logo
 
 export default function Principal({ onViewChange }) {
-    const handleViewChange = (view) => {
-      onViewChange(view);
-    };
-  
-    return (
-      <div className="principal">
-        <h2>Principal</h2>
-        <div className="button-group">
-          <button onClick={() => handleViewChange('pacienteForm')}>Ver Paciente Form</button>
-          <button onClick={() => handleViewChange('historiaClinicaForm')}>Ver Historia Clínica Form</button>
-          <button onClick={() => handleViewChange('consultaForm')}>Ver Consulta Form</button>
+  const handleViewChange = (view) => {
+    onViewChange(view);
+  };
+
+  return (
+    <div className="wrapper">
+      <div className="sidebar">
+        <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo" />
         </div>
+        <ul>
+          <li>
+            <button onClick={() => handleViewChange('pacienteForm')}>PACIENTES</button>
+          </li>
+          <li>
+            <button onClick={() => handleViewChange('historiaClinicaForm')}>HISTORIAS CLINICAS</button>
+          </li>
+          <li>
+            <button onClick={() => handleViewChange('consultaForm')}>CONSULTAS</button>
+          </li>
+        </ul>
       </div>
-    );
-  }
-  
+      
+    </div>
+  );
+}
