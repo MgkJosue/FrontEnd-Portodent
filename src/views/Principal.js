@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Principal.css';
-import logo from '../imagenes/portodentB7B7B7-300x129.png'; // Ruta de la imagen del logo
+import logo from '../images/portodentB7B7B7-300x129.png'; // Ruta de la imagen del logo
 import { Link } from 'react-router-dom';
 
 export default function Principal() {
