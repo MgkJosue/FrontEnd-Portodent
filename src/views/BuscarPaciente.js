@@ -95,9 +95,8 @@ export default function BuscarPaciente({ onViewChange }) {
               <td>{paciente.Cedula}</td>
               <td>{paciente.Telefono}</td>
               <td>
-                <button onClick={() => handleViewChange('historiaClinica', paciente.ID_Paciente)}>
-                  Ver Historia Clínica
-                </button>
+              <Link to={`/historia-clinica-form/${paciente.ID_Paciente}`}><button>VER HISTORIA CLINICA</button></Link>
+
               </td>
             </tr>
           ))}
