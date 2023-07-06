@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import '../styles/PacienteForm.css';
 
 export default function PacienteForm() {
-
   const [formData, setFormData] = useState({
     Cedula: '',
     Nombre: '',
@@ -17,6 +16,7 @@ export default function PacienteForm() {
   });
 
   const [showMessage, setShowMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,14 +28,12 @@ export default function PacienteForm() {
         }
         break;
       case 'Cedula':
-      case 'Telefono':
-        if (/^\d*$/.test(value)) {
+        if (/^[a-zA-Z0-9]*$/.test(value)  && value.length <= 20) {
           setFormData({ ...formData, [name]: value });
         }
         break;
-      case 'FechaNacimiento':
-        const current = new Date().toISOString().split('T')[0];
-        if (value <= current) {
+      case 'Telefono':
+        if (/^\d*$/.test(value) && value.length <= 20) {
           setFormData({ ...formData, [name]: value });
         }
         break;
@@ -53,11 +51,12 @@ export default function PacienteForm() {
 
       setShowMessage(true);
       setTimeout(() => setShowMessage(false), 2000);
-
     } catch (error) {
       console.error(error);
+      setErrorMessage('Error al crear el paciente, revise los campos nuevamente.');
     }
   };
+
 
   return (
     <div className="page-container">
@@ -81,7 +80,7 @@ export default function PacienteForm() {
             <input type="text" name="Apellido" id="Apellido" onChange={handleChange} value={formData.Apellido} required />
           </div>
           <div className="input-group">
-            <label htmlFor="Cedula">Cedula</label>
+            <label htmlFor="Cedula">Cédula, Pasaporte, Identificación </label>
             <input type="text" name="Cedula" id="Cedula" onChange={handleChange} value={formData.Cedula} required />
           </div>
           <label htmlFor="Sexo">Sexo</label>
@@ -116,6 +115,11 @@ export default function PacienteForm() {
           <p><strong>SE GUARDÓ CORRECTAMENTE EL PACIENTE</strong></p>
         </div>
       )}
+      {errorMessage && (
+        <div className="message-popup">
+          <p><strong>{errorMessage}</strong></p>
+        </div>
+      )}
     </div>
-  ); 
+  );
 }
