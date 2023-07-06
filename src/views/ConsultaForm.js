@@ -2,15 +2,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/ConsultaForm.css';
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
 
 export default function ConsultaForm() {
+  const location = useLocation();
+  const historiaId = location.state?.historiaId;
+
+  console.log(location.state);
+  console.log(historiaId);
 
 
   
   const [formData, setFormData] = useState({
-    ID_HistoriaC: '',
+    ID_HistoriaC: historiaId,
     FechaConsulta: '',
     EnfActual: '',
     Antecedentes: '',
@@ -44,7 +48,7 @@ export default function ConsultaForm() {
       <h2>Crear Consulta</h2>
       <div className="input-group">
         <label htmlFor="ID_HistoriaC">ID de Historia Clínica</label>
-        <input type="text" name="ID_HistoriaC" id="ID_HistoriaC" onChange={handleChange} value={formData.ID_HistoriaC} />
+        <input type="text" name="ID_HistoriaC" id="ID_HistoriaC" onChange={handleChange} value={formData.ID_HistoriaC} readOnly />
       </div>
       <div className="input-group">
         <label htmlFor="FechaConsulta">Fecha de Consulta</label>

@@ -1,18 +1,56 @@
 .historial-container {
-  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.titulo-historial {
-  font-size: 24px;
-  font-weight: bold;
+.historial-clinico-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.contenido-historial, .crear-consulta-container {
+  flex: 1;
+  max-width: 500px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.contenido-historial h2, .crear-consulta-container h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.contenido-historial {
-  /* Estilos para el contenido del historial clínico */
+.input-group {
+  margin-bottom: 10px;
 }
 
-.carga-historial {
-  font-style: italic;
-  color: gray;
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.crear-consulta-container button {
+  width: 100%;
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
