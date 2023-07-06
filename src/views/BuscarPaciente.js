@@ -4,8 +4,13 @@ import '../styles/BuscarPaciente.css';
 import { Link } from 'react-router-dom';
 
 export default function BuscarPaciente({ onViewChange }) {
+  //adaptada para borrar paciente de ser necesario
   const handleViewChange = (view, pacienteId) => {
-    onViewChange(view, pacienteId);
+    if (view === 'ELIMINAR') {
+      setPacienteIdToDelete(pacienteId);
+    } else {
+      onViewChange(view, pacienteId);
+    }
   };
 
   const [formData, setFormData] = useState({
@@ -16,6 +21,9 @@ export default function BuscarPaciente({ onViewChange }) {
   const [pacientes, setPacientes] = useState([]);
   const [filteredPacientes, setFilteredPacientes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  //borrar paciente
+  const [pacienteIdToDelete, setPacienteIdToDelete] = useState(null);
+
 
   const fetchPacientes = async () => {
     try {
@@ -40,11 +48,25 @@ export default function BuscarPaciente({ onViewChange }) {
     });
     setFilteredPacientes(filtered);
     setCurrentPage(1);
+    //borrar
+    setPacienteIdToDelete(null); // Restablecer el ID del paciente a eliminar al cambiar la búsqueda
   };
 
   const handlePatientsPerPageChange = (e) => {
     setFormData({ ...formData, patientsPerPage: parseInt(e.target.value) });
     setCurrentPage(1);
+  };
+
+  //borrar
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:8000/pacientes/${pacienteIdToDelete}`);
+      // Actualizar la lista de pacientes después de eliminar
+      fetchPacientes();
+      setPacienteIdToDelete(null); // Restablecer el ID del paciente a eliminar
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const indexOfLastPatient = currentPage * formData.patientsPerPage;
@@ -56,8 +78,12 @@ export default function BuscarPaciente({ onViewChange }) {
   };
 
   return (
-    <div className="container">
+    <div className='container'>
       <form onSubmit={(e) => e.preventDefault()} className="buscarPaciente-form">
+        <div className="botones-container">
+          <Link to="/inicio-paciente"><button>ATRAS</button></Link>
+          <Link to="/"><button>INICIO</button></Link>
+        </div>
         <h2>Buscar Paciente</h2>
         <div className="input-group">
           <label htmlFor="search">Buscar por cédula, nombre o apellido</label>
@@ -96,7 +122,12 @@ export default function BuscarPaciente({ onViewChange }) {
               <td>{paciente.Telefono}</td>
               <td>
               <Link to={`/historia-clinica-form/${paciente.ID_Paciente}`}><button>VER HISTORIA CLINICA</button></Link>
-
+              </td>
+              <td>
+              <Link to={`/editar-paciente/${paciente.ID_Paciente}`}><button>EDITAR</button></Link>
+              </td>
+              <td>
+              <button onClick={() => handleViewChange('ELIMINAR', paciente.ID_Paciente)}>ELIMINAR</button>
               </td>
             </tr>
           ))}
@@ -111,8 +142,17 @@ export default function BuscarPaciente({ onViewChange }) {
           <button onClick={() => paginate(currentPage + 1)}>Siguiente</button>
         )}
       </div>
-      <Link to="/inicio-paciente"><button>ATRAS</button></Link>
-      <Link to="/"><button>INICIO</button></Link>
+
+
+      {pacienteIdToDelete && (
+        <div className="confirmation-dialog">
+          <p>¿Estás seguro de que quieres eliminar este paciente?</p>
+          <div className="confirmation-buttons">
+            <button className="yes-button" onClick={handleDelete}>Sí</button>
+            <button className="no-button" onClick={() => setPacienteIdToDelete(null)}>No</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -10,12 +10,6 @@ export default function Principal() {
         <Link to="/inicio-paciente" className="link-button">
           <button>PACIENTES</button>
         </Link>
-        <Link to="/historia-clinica-form" className="link-button">
-          <button>HISTORIAS CLINICAS</button>
-        </Link>
-        <Link to="/consulta-form" className="link-button">
-          <button>CONSULTAS</button>
-        </Link>
         <Link to="/soporte-tecnico" className="link-button">
           <button>SOPORTE TECNICO</button>
         </Link>
