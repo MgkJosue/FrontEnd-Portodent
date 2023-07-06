@@ -58,7 +58,7 @@ function HistorialClinico() {
       {historialClinico ? (
         <div className="historial-clinico-container">
           <div className="contenido-historial">
-            <p>ID de Historia Clínica: {historialClinico.ID_Historia}</p>
+            <p>ID de Historia Clínica: {historialClinico.ID_HistoriaC}</p>
             {consultas.length ? consultas.map(consulta => (
               <div className="consulta-item" key={consulta.consultaId}>
                 <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
@@ -69,7 +69,7 @@ function HistorialClinico() {
             )}
           </div>
           <div className="crear-consulta-container">
-            <button onClick={() => navigate('/consulta-form', { state: { historiaId: historialClinico.ID_Historia } })}>Crear Consulta</button>
+            <button onClick={() => navigate('/consulta-form', { state: { historiaId: historialClinico.ID_HistoriaC } })}>Crear Consulta</button>
           </div>
         </div>
       ) : (
