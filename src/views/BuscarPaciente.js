@@ -112,7 +112,8 @@ export default function BuscarPaciente({ onViewChange }) {
           <button onClick={() => paginate(currentPage + 1)}>Siguiente</button>
         )}
       </div>
-       <Link to="/"><button>REGRESAR</button></Link>
+      <Link to="/inicio-paciente"><button>ATRAS</button></Link>
+      <Link to="/"><button>INICIO</button></Link>
     </div>
   );
 }

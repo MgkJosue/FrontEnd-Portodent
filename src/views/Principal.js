@@ -6,34 +6,19 @@ import { Link } from 'react-router-dom';
 export default function Principal() {
   return (
     <div className="wrapper">
-      
       <div className="sidebar">
-        <ul>
-        <Link to="/paciente-form">
-          <li>
-            PACIENTES
-          </li>
-          </Link>
-          <Link to="/buscar-paciente">
-          <li>
-            BUSCAR PACIENTE
-          </li></Link>
-          <Link to="/historia-clinica-form">
-          <li>
-            HISTORIAS CLINICAS
-          </li>
-          </Link>
-          <Link to="/consulta-form">
-          <li>
-            CONSULTAS
-          </li>
-          </Link>
-          <Link to="/soporte-tecnico">
-          <li>
-           SOPORTE TECNICO
-          </li>
-          </Link>
-        </ul>
+        <Link to="/inicio-paciente" className="link-button">
+          <button>PACIENTES</button>
+        </Link>
+        <Link to="/historia-clinica-form" className="link-button">
+          <button>HISTORIAS CLINICAS</button>
+        </Link>
+        <Link to="/consulta-form" className="link-button">
+          <button>CONSULTAS</button>
+        </Link>
+        <Link to="/soporte-tecnico" className="link-button">
+          <button>SOPORTE TECNICO</button>
+        </Link>
       </div>
 
       <div className="topbar">

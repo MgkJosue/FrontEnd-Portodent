@@ -45,8 +45,19 @@
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  text-decoration: none; /* Agrega esta línea para evitar el subrayado */
 }
 
 .sidebar button:hover {
   background-color: #999;
+  text-decoration: none; /* Agrega esta línea para evitar el subrayado en el hover */
+}
+
+.link-button {
+  text-decoration: none;
+}
+
+.link-button:focus,
+.link-button:hover {
+  text-decoration: none;
 }

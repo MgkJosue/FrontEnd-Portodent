@@ -2,12 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/ConsultaForm.css';
+import { Link } from 'react-router-dom';
 
-export default function ConsultaForm({ onViewChange }) {
-  //
-  const handleViewChange = (view) => {
-    onViewChange(view);
-  };
+
+export default function ConsultaForm() {
+
 
   
   const [formData, setFormData] = useState({
@@ -96,6 +95,8 @@ export default function ConsultaForm({ onViewChange }) {
         <input type="text" name="MotivoC" id="MotivoC" onChange={handleChange} value={formData.MotivoC} />
       </div>
       <button type="submit">Enviar</button>
-    </form><button onClick={() => handleViewChange('principal')}>REGRESAR</button></>
+    </form>
+    <Link to="/"><button>INICIO</button></Link>
+    </>
   );
 }
