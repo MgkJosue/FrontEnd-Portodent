@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/PacienteForm.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function PacienteForm() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ export default function PacienteForm() {
 
   const [showMessage, setShowMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,7 +52,10 @@ export default function PacienteForm() {
       console.log(response.data);
 
       setShowMessage(true);
-      setTimeout(() => setShowMessage(false), 2000);
+      setTimeout(() => {
+        setShowMessage(false);
+        navigate('/inicio-paciente'); // Redireccionar a la vista BuscarPaciente.js
+      }, 2000);
     } catch (error) {
       console.error(error);
       setErrorMessage('Error al crear el paciente, revise los campos nuevamente.');
