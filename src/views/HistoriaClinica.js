@@ -76,9 +76,10 @@ function HistorialClinico() {
       {historialClinico ? (
         <div className="historial-clinico-container">
           <div className="contenido-historial">
+            <h2>Consultas</h2>
             <TextField
               id="fecha-busqueda"
-              label="Buscar por fecha"
+              label="Buscar consulta por fecha"
               type="date"
               defaultValue=""
               onChange={e => setFechaBusqueda(e.target.value)}
@@ -99,6 +100,7 @@ function HistorialClinico() {
 
           </div>
           <div className="crear-consulta-container">
+            <h2>Acciones</h2>
             <button onClick={() => navigate('/consulta-form', { state: { historiaId: historialClinico.ID_HistoriaC } })}>Crear Consulta</button>
           </div>
         </div>
