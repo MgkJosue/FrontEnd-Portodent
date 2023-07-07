@@ -3,14 +3,18 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/HistoriaClinica.css';
 import { Link } from 'react-router-dom';
-
+import TextField from '@mui/material/TextField';
+import Pagination from '@mui/material/Pagination';
 
 function HistorialClinico() {
   const { pacienteId } = useParams();
   const [nombrePaciente, setNombrePaciente] = useState('');
   const [historialClinico, setHistorialClinico] = useState(null);
   const [consultas, setConsultas] = useState([]);
+  const [fechaBusqueda, setFechaBusqueda] = useState("");
+  const [pagina, setPagina] = useState(1);
   const navigate = useNavigate();
+  const consultasPorPagina = 5;
 
   useEffect(() => {
     const obtenerHistorialClinico = async () => {
@@ -22,23 +26,25 @@ function HistorialClinico() {
         console.error(error);
       }
     };
-
     obtenerHistorialClinico();
   }, [pacienteId]);
 
   useEffect(() => {
     const obtenerConsultasHistoriaClinica = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/historias_clinicas/${pacienteId}/consultas`);
+        const response = await axios.get(`http://localhost:8000/historias_clinicas/${pacienteId}/consultas`, {
+          params: {
+            fecha: fechaBusqueda
+          }
+        });
         const consultas = response.data;
         setConsultas(consultas);
       } catch (error) {
         console.error(error);
       }
     };
-
     obtenerConsultasHistoriaClinica();
-  }, [pacienteId]);
+  }, [pacienteId, fechaBusqueda]);
 
   useEffect(() => {
     const obtenerNombrePaciente = async () => {
@@ -50,7 +56,6 @@ function HistorialClinico() {
         console.error(error);
       }
     };
-
     obtenerNombrePaciente();
   }, [pacienteId]);
 
@@ -58,22 +63,40 @@ function HistorialClinico() {
     navigate(`/ver-consulta/${consultaId}`);
   };
 
+  const handlePageChange = (event, value) => {
+    setPagina(value);
+  };
+
+  const consultasMostradas = consultas.slice((pagina - 1) * consultasPorPagina, pagina * consultasPorPagina);
+  const totalPaginas = Math.ceil(consultas.length / consultasPorPagina);
+
   return (
     <div className="historial-container">
       <h1 className="titulo-historial">HISTORIAL CLÍNICO DE {nombrePaciente}</h1>
       {historialClinico ? (
         <div className="historial-clinico-container">
           <div className="contenido-historial">
+            <TextField
+              id="fecha-busqueda"
+              label="Buscar por fecha"
+              type="date"
+              defaultValue=""
+              onChange={e => setFechaBusqueda(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
             <p>ID de Historia Clínica: {historialClinico.ID_HistoriaC}</p>
-            {consultas.length ? consultas.map(consulta => (
+            {consultasMostradas.length ? consultasMostradas.map(consulta => (
               <div className="consulta-item" key={consulta.ID_Consulta}>
-              <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
-              {/* Aquí puedes agregar más campos del objeto consulta como lo desees */}
-              <button onClick={() => verConsulta(consulta.ID_Consulta)}>Ver consulta</button>
-            </div>
+                <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
+                <button onClick={() => verConsulta(consulta.ID_Consulta)}>Ver consulta</button>
+              </div>
             )) : (
-              <p>No existen consultas enlazadas a este historial clínico</p>
+              <p>No se encontraron consultas para la fecha {fechaBusqueda}</p>
             )}
+          <Pagination count={totalPaginas} page={pagina} onChange={handlePageChange} />
+
           </div>
           <div className="crear-consulta-container">
             <button onClick={() => navigate('/consulta-form', { state: { historiaId: historialClinico.ID_HistoriaC } })}>Crear Consulta</button>
