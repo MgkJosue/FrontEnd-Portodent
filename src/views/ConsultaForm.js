@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/ConsultaForm.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function ConsultaForm() {
   const location = useLocation();
   const historiaId = location.state?.historiaId;
+  //regresar
+  const navigate = useNavigate();
+  //mensaje
+  const [showMessage, setShowMessage] = useState(false);
+
 
   const [formData, setFormData] = useState({
     ID_HistoriaC: '',
@@ -33,18 +38,30 @@ export default function ConsultaForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //me quede aqui
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8000/consultas/', formData);
       console.log(response.data);
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+        navigate(`/historia-clinica-form/${historiaId}`); // Redireccionar a la vista BuscarPaciente.js
+      }, 2000);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleRegresar = () => {
+    navigate(`/historia-clinica-form/${historiaId}`);
+  };
+
   return (
-    <><form onSubmit={handleSubmit} className="consulta-form">
+    <div className="page-container">
+      <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
+      <form onSubmit={handleSubmit} className="consulta-form">
       <h2>Crear Consulta</h2>
       <div className="input-group">
         <input type="hidden" name="ID_HistoriaC" id="ID_HistoriaC" onChange={handleChange} value={formData.ID_HistoriaC} readOnly />
@@ -99,7 +116,14 @@ export default function ConsultaForm() {
       </div>
       <button type="submit">Enviar</button>
     </form>
-    <Link to="/"><button>INICIO</button></Link>
-    </>
+    </div>
+    {showMessage && (
+        <div className="message-popup">
+          <p><strong>SE AGREGO LA CONSULTA CORRECTAMENTE</strong></p>
+        </div>
+      )}
+      <button onClick={handleRegresar}>REGRESAR</button>
+  </div>
+    
   );
 }

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/HistoriaClinica.css';
+import { Link } from 'react-router-dom';
+
 
 function HistorialClinico() {
   const { pacienteId } = useParams();
@@ -75,6 +77,7 @@ function HistorialClinico() {
       ) : (
         <p className="carga-historial">Cargando historial clínico...</p>
       )}
+      <Link to="/buscar-paciente"><button>REGRESAR</button></Link>
     </div>
   );
 }
