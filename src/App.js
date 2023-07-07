@@ -21,12 +21,8 @@ function App() {
         <Route path="/soporte-tecnico" element={<SoporteTecnico />} />
         <Route path="/inicio-paciente" element={<InicioPaciente />} />
 
-        <Route path="/editar-paciente/:pacienteId" element={<EditarPaciente />} />
-
+        <Route path="/editar-paciente/:pacienteId" element={<EditarPaciente />} />s
         <Route path="/historia-clinica-form/:pacienteId" element={<HistoriaClinicaForm />} />
-
-
-
       </Routes>
     </Router>
   );
