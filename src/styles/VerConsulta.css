@@ -1,0 +1,68 @@
+/* ConsultaForm.css */
+.consulta-form {
+    flex: 1;
+    margin-left: 20px;
+    }
+    .page-container {
+      position: relative;
+    }
+    
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 10px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+    .form-container.show-message {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .consulta-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .input-group {
+      margin-bottom: 10px;
+    }
+    
+    .input-group label {
+      display: block;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    
+    .consulta-form button {
+      width: 100%;
+      padding: 8px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .message-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 4px;
+      z-index: 9999;
+    }
+    
+    .message-popup p {
+      margin: 0;
+      text-align: center;
+    }

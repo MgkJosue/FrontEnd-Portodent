@@ -123,7 +123,7 @@ export default function ConsultaForm() {
         </div>
       )}
       <button onClick={handleRegresar}>REGRESAR</button>
-  </div>
+    </div>
     
   );
 }
