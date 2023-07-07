@@ -8,6 +8,7 @@ import SoporteTecnico from './views/SoporteTecnico.js';
 import BuscarPaciente from './views/BuscarPaciente.js';
 import InicioPaciente from './views/InicioPaciente.js';
 import EditarPaciente from './views/EditarPaciente.js';
+import VerConsulta from './views/VerConsulta.js';
 
 
 function App() {
@@ -21,8 +22,11 @@ function App() {
         <Route path="/soporte-tecnico" element={<SoporteTecnico />} />
         <Route path="/inicio-paciente" element={<InicioPaciente />} />
 
-        <Route path="/editar-paciente/:pacienteId" element={<EditarPaciente />} />s
+        <Route path="/editar-paciente/:pacienteId" element={<EditarPaciente />} />
         <Route path="/historia-clinica-form/:pacienteId" element={<HistoriaClinicaForm />} />
+        <Route path="/ver-consulta/:consultaId" element={<VerConsulta />} />
+
+
       </Routes>
     </Router>
   );

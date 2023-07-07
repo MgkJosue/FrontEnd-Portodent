@@ -54,6 +54,10 @@ function HistorialClinico() {
     obtenerNombrePaciente();
   }, [pacienteId]);
 
+  const verConsulta = (consultaId) => {
+    navigate(`/ver-consulta/${consultaId}`);
+  };
+
   return (
     <div className="historial-container">
       <h1 className="titulo-historial">HISTORIAL CLÍNICO DE {nombrePaciente}</h1>
@@ -62,10 +66,11 @@ function HistorialClinico() {
           <div className="contenido-historial">
             <p>ID de Historia Clínica: {historialClinico.ID_HistoriaC}</p>
             {consultas.length ? consultas.map(consulta => (
-              <div className="consulta-item" key={consulta.consultaId}>
-                <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
-                {/* Aquí puedes agregar más campos del objeto consulta como lo desees */}
-              </div>
+              <div className="consulta-item" key={consulta.ID_Consulta}>
+              <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
+              {/* Aquí puedes agregar más campos del objeto consulta como lo desees */}
+              <button onClick={() => verConsulta(consulta.ID_Consulta)}>Ver consulta</button>
+            </div>
             )) : (
               <p>No existen consultas enlazadas a este historial clínico</p>
             )}
