@@ -58,7 +58,7 @@ export default function PacienteForm() {
       }, 2000);
     } catch (error) {
       console.error(error);
-      setErrorMessage('Error al crear el paciente, revise los campos nuevamente.');
+      setErrorMessage(error.response.data.detail);
     }
   };
 
