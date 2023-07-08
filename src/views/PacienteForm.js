@@ -65,8 +65,7 @@ export default function PacienteForm() {
 
   return (
     <div className="page-container">
-      <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
-        <div className="botones-container">
+      <div className="botones-container">
           <Link to="/inicio-paciente">
             <button>ATRAS</button>
           </Link>
@@ -74,6 +73,7 @@ export default function PacienteForm() {
             <button>INICIO</button>
           </Link>
         </div>
+      <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
         <form onSubmit={handleSubmit} className="paciente-form">
           <h2>Registrar Paciente</h2>
           <div className="input-group">

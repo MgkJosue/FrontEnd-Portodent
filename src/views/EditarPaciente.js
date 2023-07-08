@@ -79,6 +79,7 @@ export default function EditarPaciente() {
 
   return (
     <div className="page-container">
+      <Link to="/buscar-paciente"><button>REGRESAR</button></Link>
       <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
         <form onSubmit={handleSubmit} className="paciente-form">
           <h2>Editar Paciente</h2>
@@ -120,7 +121,6 @@ export default function EditarPaciente() {
           </div>
           <button type="submit">GUARDAR</button>
         </form>
-        <Link to="/buscar-paciente"><button>REGRESAR</button></Link>
       </div>
       {showMessage && (
         <div className="message-popup">

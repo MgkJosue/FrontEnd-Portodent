@@ -32,11 +32,7 @@ function HistorialClinico() {
   useEffect(() => {
     const obtenerConsultasHistoriaClinica = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/historias_clinicas/${pacienteId}/consultas`, {
-          params: {
-            fecha: fechaBusqueda
-          }
-        });
+        const response = await axios.get(`http://localhost:8000/historias_clinicas/${pacienteId}/consultas`);
         const consultas = response.data;
         setConsultas(consultas);
       } catch (error) {
@@ -44,7 +40,7 @@ function HistorialClinico() {
       }
     };
     obtenerConsultasHistoriaClinica();
-  }, [pacienteId, fechaBusqueda]);
+  }, [pacienteId]);
 
   useEffect(() => {
     const obtenerNombrePaciente = async () => {
@@ -63,15 +59,26 @@ function HistorialClinico() {
     navigate(`/ver-consulta/${consultaId}`);
   };
 
+  const filtrarConsultasPorFecha = () => {
+    if (fechaBusqueda) {
+      const consultasFiltradas = consultas.filter(consulta => consulta.FechaConsulta === fechaBusqueda);
+      return consultasFiltradas;
+    } else {
+      return consultas;
+    }
+  };
+
   const handlePageChange = (event, value) => {
     setPagina(value);
   };
 
-  const consultasMostradas = consultas.slice((pagina - 1) * consultasPorPagina, pagina * consultasPorPagina);
-  const totalPaginas = Math.ceil(consultas.length / consultasPorPagina);
+  const consultasFiltradas = filtrarConsultasPorFecha();
+  const consultasMostradas = consultasFiltradas.slice((pagina - 1) * consultasPorPagina, pagina * consultasPorPagina);
+  const totalPaginas = Math.ceil(consultasFiltradas.length / consultasPorPagina);
 
   return (
     <div className="historial-container">
+      <Link to="/buscar-paciente"><button className='return'>REGRESAR</button></Link>
       <h1 className="titulo-historial">HISTORIAL CLÍNICO DE {nombrePaciente}</h1>
       {historialClinico ? (
         <div className="historial-clinico-container">
@@ -94,9 +101,9 @@ function HistorialClinico() {
                 <button onClick={() => verConsulta(consulta.ID_Consulta)}>Ver consulta</button>
               </div>
             )) : (
-              <p>No se encontraron consultas para la fecha {fechaBusqueda}</p>
+              <p>No se encontraron consultas asociadas a la fecha {fechaBusqueda}</p>
             )}
-          <Pagination count={totalPaginas} page={pagina} onChange={handlePageChange} />
+            <Pagination count={totalPaginas} page={pagina} onChange={handlePageChange} />
 
           </div>
           <div className="crear-consulta-container">
@@ -107,7 +114,6 @@ function HistorialClinico() {
       ) : (
         <p className="carga-historial">Cargando historial clínico...</p>
       )}
-      <Link to="/buscar-paciente"><button>REGRESAR</button></Link>
     </div>
   );
 }
