@@ -60,6 +60,7 @@ export default function ConsultaForm() {
 
   return (
     <div className="page-container">
+      <button onClick={handleRegresar}>REGRESAR</button>
       <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
       <form onSubmit={handleSubmit} className="consulta-form">
       <h2>Crear Consulta</h2>
@@ -122,7 +123,6 @@ export default function ConsultaForm() {
           <p><strong>SE AGREGO LA CONSULTA CORRECTAMENTE</strong></p>
         </div>
       )}
-      <button onClick={handleRegresar}>REGRESAR</button>
     </div>
     
   );
