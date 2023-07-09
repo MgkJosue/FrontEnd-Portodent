@@ -79,7 +79,7 @@ export default function EditarPaciente() {
 
   return (
     <div className="page-container">
-      <Link to="/buscar-paciente"><button>REGRESAR</button></Link>
+      <Link to="/buscar-paciente"><button>CANCELAR</button></Link>
       <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
         <form onSubmit={handleSubmit} className="paciente-form">
           <h2>Editar Paciente</h2>
