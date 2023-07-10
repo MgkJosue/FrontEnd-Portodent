@@ -66,11 +66,8 @@ export default function PacienteForm() {
   return (
     <div className="page-container">
       <div className="botones-container">
-          <Link to="/inicio-paciente">
-            <button>ATRAS</button>
-          </Link>
           <Link to="/">
-            <button>INICIO</button>
+            <button>ATRAS</button>
           </Link>
         </div>
       <div className={`form-container ${showMessage ? 'show-message' : ''}`}>

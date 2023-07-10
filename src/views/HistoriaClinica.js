@@ -8,6 +8,7 @@ import Pagination from '@mui/material/Pagination';
 //imprimir historia clinica
 import * as XLSX from 'xlsx';
 
+
 function HistorialClinico() {
   const { pacienteId } = useParams();
   const [nombrePaciente, setNombrePaciente] = useState('');
@@ -94,36 +95,30 @@ function HistorialClinico() {
     ];
   
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet([]);
-  
-    // Inserta los datos en las celdas correspondientes y combina las celdas
+  const ws = XLSX.utils.aoa_to_sheet([[]]);
+
   data.forEach((item) => {
     const cellRange = XLSX.utils.decode_range(item.position);
     const startRow = cellRange.s.r;
     const startCol = cellRange.s.c;
     const endRow = cellRange.e.r;
     const endCol = cellRange.e.c;
+
     for (let row = startRow; row <= endRow; row++) {
       for (let col = startCol; col <= endCol; col++) {
         const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
-        ws[cellAddress] = { t: 's', v: item.value };
+        const cellValue = item.value != null ? item.value.toString() : ''; // Convertir a cadena de texto
+        ws[cellAddress] = { t: 's', v: cellValue }; // Usar tipo 's' para cadena de texto
       }
     }
   });
 
-  // Define las combinaciones de celdas
   const merges = data.map((item) => XLSX.utils.decode_range(item.position));
-
-  // Agrega los datos a la hoja de cálculo
-  const sheetData = XLSX.utils.sheet_to_json(ws, { header: 1, raw: false });
-  XLSX.utils.sheet_add_aoa(ws, sheetData, { origin: -1 });
-
-  // Agrega las combinaciones de celdas a la hoja de cálculo
   ws['!merges'] = merges;
 
   XLSX.utils.book_append_sheet(wb, ws, 'Consulta');
 
-  XLSX.writeFile(wb, 'ultimaprueba.xlsx');
+  XLSX.writeFile(wb, 'nombre_archivo.xlsx');
   };
 
   const consultasFiltradas = filtrarConsultasPorFecha();

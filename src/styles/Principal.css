@@ -48,6 +48,13 @@
   text-decoration: none; /* Agrega esta línea para evitar el subrayado */
 }
 
+.footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
 .sidebar button:hover {
   background-color: #999;
   text-decoration: none; /* Agrega esta línea para evitar el subrayado en el hover */
