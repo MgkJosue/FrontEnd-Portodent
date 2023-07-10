@@ -5,6 +5,8 @@ import '../styles/HistoriaClinica.css';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Pagination from '@mui/material/Pagination';
+//imprimir historia clinica
+import * as XLSX from 'xlsx';
 
 function HistorialClinico() {
   const { pacienteId } = useParams();
@@ -72,6 +74,58 @@ function HistorialClinico() {
     setPagina(value);
   };
 
+  //imprimir en excel 
+  const handleImprimir = async (consultaId) => {
+    const consultaSeleccionada = consultas.find(consulta => consulta.ID_Consulta === consultaId);
+  
+    const data = [
+      { value: consultaSeleccionada.FechaConsulta, position: 'A2:B2' },
+      { value: consultaSeleccionada.EnfActual, position: 'A1:B1' },
+      { value: consultaSeleccionada.Antecedentes, position: 'A3:B3' },
+      { value: consultaSeleccionada.SignosVitales, position: 'A4:B4' },
+      { value: consultaSeleccionada.ExamenEstomat, position: 'A5:B5' },
+      { value: consultaSeleccionada.Odontograma, position: 'A6:B6' },
+      { value: consultaSeleccionada.IndicadoresSalud, position: 'A7:B7' },
+      { value: consultaSeleccionada.IndicesCPO, position: 'A8:B8' },
+      { value: consultaSeleccionada.PlanDiagnostico, position: 'A9:B9' },
+      { value: consultaSeleccionada.Diagnostico, position: 'A10:B10' },
+      { value: consultaSeleccionada.Tratamientos, position: 'A11:B11' },
+      { value: consultaSeleccionada.MotivoC, position: 'A12:B12' },
+    ];
+  
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet([]);
+  
+    // Inserta los datos en las celdas correspondientes y combina las celdas
+  data.forEach((item) => {
+    const cellRange = XLSX.utils.decode_range(item.position);
+    const startRow = cellRange.s.r;
+    const startCol = cellRange.s.c;
+    const endRow = cellRange.e.r;
+    const endCol = cellRange.e.c;
+    for (let row = startRow; row <= endRow; row++) {
+      for (let col = startCol; col <= endCol; col++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+        ws[cellAddress] = { t: 's', v: item.value };
+      }
+    }
+  });
+
+  // Define las combinaciones de celdas
+  const merges = data.map((item) => XLSX.utils.decode_range(item.position));
+
+  // Agrega los datos a la hoja de cálculo
+  const sheetData = XLSX.utils.sheet_to_json(ws, { header: 1, raw: false });
+  XLSX.utils.sheet_add_aoa(ws, sheetData, { origin: -1 });
+
+  // Agrega las combinaciones de celdas a la hoja de cálculo
+  ws['!merges'] = merges;
+
+  XLSX.utils.book_append_sheet(wb, ws, 'Consulta');
+
+  XLSX.writeFile(wb, 'ultimaprueba.xlsx');
+  };
+
   const consultasFiltradas = filtrarConsultasPorFecha();
   const consultasMostradas = consultasFiltradas.slice((pagina - 1) * consultasPorPagina, pagina * consultasPorPagina);
   const totalPaginas = Math.ceil(consultasFiltradas.length / consultasPorPagina);
@@ -99,6 +153,7 @@ function HistorialClinico() {
               <div className="consulta-item" key={consulta.ID_Consulta}>
                 <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
                 <button onClick={() => verConsulta(consulta.ID_Consulta)}>Ver consulta</button>
+                <button onClick={() => handleImprimir(consulta.ID_Consulta)}>Imprimir</button>
               </div>
             )) : (
               <p>No se encontraron consultas asociadas a la fecha {fechaBusqueda}</p>
