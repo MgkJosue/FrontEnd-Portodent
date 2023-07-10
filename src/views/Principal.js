@@ -7,9 +7,8 @@ export default function Principal() {
   return (
     <div className="wrapper">
       <div className="sidebar">
-        <Link to="/inicio-paciente" className="link-button">
-          <button>PACIENTES</button>
-        </Link>
+        <Link to="/paciente-form" className="link-button"><button>REGISTRO PACIENTE</button></Link>
+        <Link to="/buscar-paciente" className="link-button"><button>BUSCAR PACIENTE</button></Link>
         <Link to="/soporte-tecnico" className="link-button">
           <button>SOPORTE TECNICO</button>
         </Link>
@@ -22,5 +21,6 @@ export default function Principal() {
       </div>
       <br/>
     </div>
+    
   );
 }

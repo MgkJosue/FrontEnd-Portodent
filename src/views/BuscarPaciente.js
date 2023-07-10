@@ -80,8 +80,7 @@ export default function BuscarPaciente({ onViewChange }) {
   return (
     <div className='container'>
       <div className="botones-container">
-          <Link to="/inicio-paciente"><button>ATRAS</button></Link>
-          <Link to="/"><button>INICIO</button></Link>
+          <Link to="/"><button>ATRAS</button></Link>
         </div>
       <form onSubmit={(e) => e.preventDefault()} className="buscarPaciente-form">
         <h2>Buscar Paciente</h2>
