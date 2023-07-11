@@ -122,8 +122,8 @@ export default function BuscarPaciente({ onViewChange }) {
               <td>{paciente.Telefono}</td>
               <td>
               <Link to={`/historia-clinica-form/${paciente.ID_Paciente}`}><button>VER HISTORIA CLINICA</button></Link>
-              <Link to={`/editar-paciente/${paciente.ID_Paciente}`}><button>EDITAR</button></Link>
-              <button onClick={() => handleViewChange('ELIMINAR', paciente.ID_Paciente)}>ELIMINAR</button>
+              <Link to={`/editar-paciente/${paciente.ID_Paciente}`}><button>EDITAR PACEINTE</button></Link>
+              <button onClick={() => handleViewChange('ELIMINAR', paciente.ID_Paciente)}>ELIMINAR PACIENTE</button>
               </td>
             </tr>
           ))}
