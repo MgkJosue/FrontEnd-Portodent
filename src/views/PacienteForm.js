@@ -54,7 +54,7 @@ export default function PacienteForm() {
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
-        navigate('/inicio-paciente'); // Redireccionar a la vista BuscarPaciente.js
+        navigate('/'); // Redireccionar a la vista BuscarPaciente.js
       }, 2000);
     } catch (error) {
       console.error(error);
@@ -87,10 +87,10 @@ export default function PacienteForm() {
           </div>
           <label htmlFor="Sexo">Sexo</label>
           <div className="form-control">
-            <input type="radio" name="Sexo" id="Masculino" onChange={handleChange} value="Masculino" required />
-            <label htmlFor="Masculino">Masculino</label>
-            <input type="radio" name="Sexo" id="Femenino" onChange={handleChange} value="Femenino" required />
-            <label htmlFor="Femenino">Femenino</label>
+            <input type="radio" name="Sexo" id="M" onChange={handleChange} value="M" required />
+            <label htmlFor="M">Masculino</label>
+            <input type="radio" name="Sexo" id="F" onChange={handleChange} value="F" required />
+            <label htmlFor="F">Femenino</label>
           </div>
           <br></br>
           <div className="input-group">
