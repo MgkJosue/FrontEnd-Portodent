@@ -66,3 +66,52 @@
       margin: 0;
       text-align: center;
     }
+
+    /*cpo*/
+    .container-form{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      width: 90%;
+      max-width: 1200px;
+    }
+    
+    
+    .column {
+      flex: 1;
+      max-width: 500px;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+
+    .container-form2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      width: 90%;
+      max-width: 1200px;
+      }
+      
+      .column2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 10px; /* Nueva propiedad */
+      padding: 20px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      }
+      
+      .horizontal-container {
+      display: flex;
+      align-items: center;
+      }
+      
+      .horizontal-container input[type="radio"],
+      .horizontal-container label {
+      margin-right: 10px;
+      }

@@ -77,53 +77,116 @@
     gap: 0.5em;
   }
 
-  input[type="checkbox"] {
-    /* Add if not using autoprefixer */
-    -webkit-appearance: none;
-    /* Remove most all native input styles */
-    appearance: none;
-    /* For iOS < 15 */
-    background-color: var(--form-background);
-    /* Not removed via appearance */
-    margin: 0;
   
-    font: inherit;
-    color: currentColor;
-    width: 1.15em;
-    height: 1.15em;
-    border: 0.15em solid currentColor;
-    border-radius: 0.15em;
-    transform: translateY(-0.075em);
-  
-    display: grid;
-    place-content: center;
+/*cpo*/
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 90%;
+  max-width: 1200px;
+}
+
+
+.column {
+  flex: 1;
+  max-width: 500px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.column label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.column p {
+  display: flex;
+  align-items: center;
+}
+
+.column p input {
+  margin-left: 10px; /* Espacio entre el texto y el input */
+}
+
+/*punto7 horixontal*/
+
+.container-form2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 90%;
+  max-width: 1200px;
   }
   
-  input[type="checkbox"]::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
-    transform-origin: bottom left;
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--form-control-color);
-    /* Windows High Contrast Mode */
-    background-color: CanvasText;
+  .column2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px; /* Nueva propiedad */
+  padding: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
   }
   
-  input[type="checkbox"]:checked::before {
-    transform: scale(1);
+  .horizontal-container {
+  display: flex;
+  align-items: center;
   }
   
-  input[type="checkbox"]:focus {
-    outline: max(2px, 0.15em) solid currentColor;
-    outline-offset: max(2px, 0.15em);
+  .horizontal-container input[type="radio"],
+  .horizontal-container label {
+  margin-right: 10px;
+  }
+    
+
+
+
+
+  /*contenedor de inicio*/
+  .input-group3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
   }
   
-  input[type="checkbox"]:disabled {
-    --form-control-color: var(--form-control-disabled);
-  
-    color: var(--form-control-disabled);
-    cursor: not-allowed;
+  .column3 {
+    display: flex;
+    flex-direction: column;
   }
+  
+  .horizontal-container2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .horizontal-container2 input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .horizontal-container2 label {
+    margin-right: 20px;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  
+  
+  
+  
+  
+

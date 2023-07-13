@@ -25,14 +25,57 @@ export default function Consulta() {
     OpcionesEstomatognatico:'',
     ExamenEstomat: '',
     Odontograma: '',
-    IndicadoresSalud: '',
+
+    PiezaDental16_17_55 : '',
+    PiezaDental11_21_51 : '',
+    PiezaDental26_27_65 : '',
+    PiezaDental36_37_75 : '',
+    PiezaDental31_41_71 : '',
+    PiezaDental46_47_85 : '',
+    Placa16_17_55 : '',
+    Placa11_21_51 : '',
+    Placa26_27_65 : '',
+    Placa36_37_75 : '',
+    Placa31_41_71 : '',
+    Placa46_47_85 : '',
+    
+    Calculo16_17_55 : '',
+    Calculo11_21_51 : '',
+    Calculo26_27_65 : '',
+    Calculo36_37_75 : '',
+    Calculo31_41_71 : '',
+    Calculo46_47_85 : '',
+    
+    Gingivitis16_17_55 : '',
+    Gingivitis11_21_51 : '',
+    Gingivitis26_27_65 : '',
+    Gingivitis36_37_75 : '',
+    Gingivitis31_41_71 : '',
+    Gingivitis46_47_85 : '',
+    
+    TotalPlaca: '',
+    TotalCalculo: '',
+    TotalGingivitis: '',
     EnfermedadPerio: '',
     MalOclusion: '',
     Fluorosis: '',
-    IndicesCPO: '',
+
+    IndiceC: '',
+    IndiceP: '',
+    IndiceO: '',
+    TotalCPO:'',
+    Indicedc: '',
+    Indicede: '',
+    Indicedo: '',
+    Totalceo:'',
+
     OpcionPlan:'',
     PlanDiagnostico: '',
     Diagnostico: '',
+    Cie:'',
+    PreoDef:'',
+    FechaProximaConsulta:'',
+
     FechaConsulta: '',
     Tratamientos: '',
     Procedimientos: '',
@@ -95,49 +138,51 @@ export default function Consulta() {
       <h2>Ver Consulta</h2>
 
       <div className="input-group">
-        <p><strong>ESTABLECIMIENTO: </strong> PORTODENT</p>
-      </div>
+        <div className="input-group">
+          <p><strong>ESTABLECIMIENTO: </strong> PORTODENT</p>
+        </div>
 
-      <div className="input-group">
-        <p><strong>NOMBRES: </strong>{paciente.Nombre}</p>
-      </div>
+        <div className="input-group">
+          <p><strong>NOMBRES: </strong>{paciente.Nombre}</p>
+        </div>
 
-      <div className="input-group">
-        <p><strong>APELLIDOS: </strong>{paciente.Apellido}</p>
-      </div>
+        <div className="input-group">
+          <p><strong>APELLIDOS: </strong>{paciente.Apellido}</p>
+        </div>
 
-      <div className="input-group">
-        <p><strong>SEXO (M-F): </strong>{paciente.Sexo}</p>
-      </div>
+        <div className="input-group">
+          <p><strong>SEXO (M-F): </strong>{paciente.Sexo}</p>
+        </div>
 
-      <div className="input-group">
-        <p><strong>EDAD: </strong>{paciente.Edad}</p>
-      </div>
+        <div className="input-group">
+          <p><strong>EDAD: </strong>{paciente.Edad}</p>
+        </div>
 
-      <div className="input-group">
-        <p><strong>N° HISTORIAL CLINICO: </strong>{consulta.ID_HistoriaC}</p>
-      </div>
+        <div className="input-group">
+          <p><strong>N° HISTORIAL CLINICO: </strong>{consulta.ID_HistoriaC}</p>
+        </div>
 
-      <div className="input-group">
-        <p><strong>CICLO DE VIDA: </strong>{consulta.RangoAños}</p>
+        <div className="input-group">
+          <p><strong>CICLO DE VIDA: </strong>{consulta.RangoAños}</p>
+        </div>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="MotivoC"><strong>1. MOTIVO DE CONSULTA</strong></label>
         <input type="text" name="MotivoC" id="MotivoC" onChange={handleChange} value={consulta.MotivoC} readOnly/>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="EnfActual"><strong>2. ENFERMEDAD O PROBLEMA ACTUAL</strong></label>
         <input type="text" name="EnfActual" id="EnfActual" onChange={handleChange} value={consulta.EnfActual} readOnly/>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="EnfActual"><strong>3. ANTECEDENTES PERSONALES Y FAMILIARESL</strong></label>
         <p>ENFERMEDAD: {consulta.OpcionesAntecedentes}</p>
         <input type="text" name="EnfActual" id="EnfActual" onChange={handleChange} value={consulta.Antecedentes} readOnly/>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="SignosVitales"><strong>4. SIGNOS VITALES</strong></label>
         <p>PRESIÓN ARTERIAL: {consulta.SignosVitales}</p>
@@ -145,51 +190,135 @@ export default function Consulta() {
         <p>TEMPERATURA °C: {consulta.Temperatura}</p>
         <p>FRECUENCIA RESPIRATORIA min: {consulta.FrecuenciaRes}</p>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="ExamenEstomat"><strong>5. EXAMEN DEL SISTEMA ESTOMATOGNÁTICO</strong></label>
         <p>PATOLOGÍA DIAGNOSTICADA: {consulta.OpcionesEstomatognatico}</p>
         <input type="text" name="ExamenEstomat" id="ExamenEstomat" onChange={handleChange} value={consulta.ExamenEstomat} readOnly/>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="Odontograma"><strong>6. ODONTOGRAMA</strong></label>
         <input type="text" name="Odontograma" id="Odontograma" onChange={handleChange} value={consulta.Odontograma} readOnly/>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="IndicadoresSalud"><strong>7. INDICADORES DE SALUD BUCAL</strong></label>
-        <p>HIGIENE ORAL SIMPLIFICADA: {consulta.IndicadoresSalud}</p>
+        <p><strong>HIGIENE ORAL SIMPLIFICADA</strong></p>
+        <div class="container-form2">
+          <div class="column2">
+            <label><strong>PIEZAS DENTALES</strong></label>
+            <div class="horizontal-container">
+              <p>{consulta.PiezaDental16_17_55}</p>
+            </div> 
+
+            <div class="horizontal-container">
+              <p>{consulta.PiezaDental11_21_51}</p>
+            </div>
+
+            <div class="horizontal-container">
+              <p>{consulta.PiezaDental26_27_65}</p>
+            </div>
+
+            <div class="horizontal-container">
+              <p>{consulta.PiezaDental36_37_75}</p>
+            </div>
+
+            <div class="horizontal-container">
+              <p>{consulta.PiezaDental31_41_71}</p>
+            </div>
+
+            <div class="horizontal-container">
+              <p>{consulta.PiezaDental46_47_85}</p>
+            </div>
+          </div >
+
+          <div class="column2">
+            <label><strong>PLACA.. 0-1-2-3</strong></label>
+            <div class="">
+              <p>{consulta.Placa16_17_55}</p>
+              <p>{consulta.Placa11_21_51}</p>
+              <p>{consulta.Placa26_27_65}</p>
+              <p>{consulta.Placa36_37_75}</p>
+              <p>{consulta.Placa31_41_71}</p>
+              <p>{consulta.Placa46_47_85}</p>
+              <p>TOTAL: {consulta.TotalPlaca}</p>
+            </div>
+
+          </div>
+          <div class="column2">
+            <label><strong>CÁLCULO 0-1-2-3</strong></label>
+            <div class="">
+              <p>{consulta.Calculo16_17_55}</p>
+              <p>{consulta.Calculo11_21_51}</p>
+              <p>{consulta.Calculo26_27_65}</p>
+              <p>{consulta.Calculo36_37_75}</p>
+              <p>{consulta.Calculo31_41_71}</p>
+              <p>{consulta.Calculo46_47_85}</p>
+              <p>TOTAL: {consulta.TotalCalculo}</p>
+            </div>
+
+          </div>
+          <div class="column2">
+            <label><strong>GINGIVITIS 0-1</strong></label>
+            <div class="">
+              <p>{consulta.Gingivitis16_17_55}</p>
+              <p>{consulta.Gingivitis11_21_51}</p>
+              <p>{consulta.Gingivitis26_27_65}</p>
+              <p>{consulta.Gingivitis36_37_75}</p>
+              <p>{consulta.Gingivitis31_41_71}</p>
+              <p>{consulta.Gingivitis46_47_85}</p>
+              <p>TOTAL: {consulta.TotalGingivitis}</p>
+            </div>
+          </div>
+        </div>
         <p>ENFERMEDAD PERIODONTAL: {consulta.EnfermedadPerio}</p>
         <p>MAL OCLUSIÓN: {consulta.MalOclusion}</p>
         <p>FLUOROSIS: {consulta.Fluorosis}</p>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="IndicesCPO"><strong>8. INDICES CPO-ceo</strong></label>
-        <input type="text" name="IndicesCPO" id="IndicesCPO" onChange={handleChange} value={consulta.IndicesCPO} readOnly/>
+        <div class="container-form">
+          <div class="column">
+            <label><strong>D</strong></label>
+            <p>C: {consulta.IndiceC}</p>
+            <p>P: {consulta.IndiceP}</p>
+            <p>O: {consulta.IndiceO}</p>
+            <p>TOTAL:{consulta.TotalCPO} </p>
+          </div>
+          <div class="column">
+            <label><strong>d</strong></label>
+            <p>c: {consulta.Indicedc}</p>
+            <p>e: {consulta.Indicede}</p>
+            <p>o: {consulta.Indicedo}</p>
+            <p>TOTAL: {consulta.Totalceo}</p>
+          </div>
+        </div>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="PlanDiagnostico"><strong>10. PLANES DE DIAGNÓSTICO, TERAPÉUTICO Y EDUCACIONAL</strong></label>
         <p>TIPO DE EXAMEN QUE SE REQUIERE: {consulta.OpcionPlan}</p>
         <input type="text" name="PlanDiagnostico" id="PlanDiagnostico" onChange={handleChange} value={consulta.PlanDiagnostico} readOnly/>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="Diagnostico"><strong>11. DIAGNÓSTICO</strong></label>
         <input type="text" name="Diagnostico" id="Diagnostico" onChange={handleChange} value={consulta.Diagnostico} readOnly/>
+        <p>CIE: {consulta.Cie}</p>
+        <p>PRE o DEF: {consulta.PreoDef}</p>
       </div>
-
+      <br></br>
       <div className="input-group">
-        <p>FECHA DE APERTURA: </p>
-        <p>FECHA DE CONTROL: </p>
-        <p>PROFESIONAL: DR. ALEXANDER CÁRDENAS </p>
-        <p>CÓDIGO: 0214512 </p>
-        <p>FIRMA: </p>
-        <p>NUMERO DE HOJA: 1</p>
+        <p><strong>FECHA DE APERTURA:</strong> </p>
+        <p><strong>FECHA DE CONTROL:</strong> {consulta.FechaProximaConsulta}</p>
+        <p><strong>PROFESIONAL:</strong> DR. ALEXANDER CÁRDENAS </p>
+        <p><strong>CÓDIGO:</strong> 0214512 </p>
+        <p><strong>FIRMA:</strong> </p>
+        <p><strong>NUMERO DE HOJA:</strong> 1</p>
       </div>
-
+      <br></br>
       <div className="input-group">
         <label htmlFor="Tratamientos"><strong>12. TRATAMIENTO</strong></label>
         <p>FECHA: {consulta.FechaConsulta}</p>
