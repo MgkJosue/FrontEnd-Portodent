@@ -5,9 +5,7 @@ import '../styles/HistoriaClinica.css';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Pagination from '@mui/material/Pagination';
-//imprimir historia clinica
-import * as XLSX from 'xlsx';
-
+import { saveAs } from 'file-saver';
 
 function HistorialClinico() {
   const { pacienteId } = useParams();
@@ -76,50 +74,24 @@ function HistorialClinico() {
   };
 
   //imprimir en excel 
-  const handleImprimir = async (consultaId) => {
-    const consultaSeleccionada = consultas.find(consulta => consulta.ID_Consulta === consultaId);
-  
-    const data = [
-      { value: consultaSeleccionada.FechaConsulta, position: 'A2:B2' },
-      { value: consultaSeleccionada.EnfActual, position: 'A1:B1' },
-      { value: consultaSeleccionada.Antecedentes, position: 'A3:B3' },
-      { value: consultaSeleccionada.SignosVitales, position: 'A4:B4' },
-      { value: consultaSeleccionada.ExamenEstomat, position: 'A5:B5' },
-      { value: consultaSeleccionada.Odontograma, position: 'A6:B6' },
-      { value: consultaSeleccionada.IndicadoresSalud, position: 'A7:B7' },
-      { value: consultaSeleccionada.IndicesCPO, position: 'A8:B8' },
-      { value: consultaSeleccionada.PlanDiagnostico, position: 'A9:B9' },
-      { value: consultaSeleccionada.Diagnostico, position: 'A10:B10' },
-      { value: consultaSeleccionada.Tratamientos, position: 'A11:B11' },
-      { value: consultaSeleccionada.MotivoC, position: 'A12:B12' },
-    ];
-  
-    const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.aoa_to_sheet([[]]);
-
-  data.forEach((item) => {
-    const cellRange = XLSX.utils.decode_range(item.position);
-    const startRow = cellRange.s.r;
-    const startCol = cellRange.s.c;
-    const endRow = cellRange.e.r;
-    const endCol = cellRange.e.c;
-
-    for (let row = startRow; row <= endRow; row++) {
-      for (let col = startCol; col <= endCol; col++) {
-        const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
-        const cellValue = item.value != null ? item.value.toString() : ''; // Convertir a cadena de texto
-        ws[cellAddress] = { t: 's', v: cellValue }; // Usar tipo 's' para cadena de texto
+  const handleImprimir = (consultaId) => {
+    axios({
+      url: `http://localhost:8000/consultas/${consultaId}/download`,
+      method: 'GET',
+      responseType: 'blob',
+    }).then((response) => {
+      let filename = 'default.xlsx';
+      try {
+        filename = response.headers['content-disposition'].split('filename=')[1].replace(/"/g, '');
+      } catch (e) {
+        console.log('No se pudo extraer el nombre del archivo, se usará el nombre por defecto.');
       }
-    }
-  });
-
-  const merges = data.map((item) => XLSX.utils.decode_range(item.position));
-  ws['!merges'] = merges;
-
-  XLSX.utils.book_append_sheet(wb, ws, 'Consulta');
-
-  XLSX.writeFile(wb, 'nombre_archivo.xlsx');
-  };
+      saveAs(new Blob([response.data]), filename);
+    }).catch((error) => {
+      console.error("Error al descargar el archivo: ", error);
+    });
+  }
+  
 
   const consultasFiltradas = filtrarConsultasPorFecha();
   const consultasMostradas = consultasFiltradas.slice((pagina - 1) * consultasPorPagina, pagina * consultasPorPagina);
