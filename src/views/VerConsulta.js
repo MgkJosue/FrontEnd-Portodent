@@ -242,7 +242,7 @@ export default function Consulta() {
               <p>{consulta.Placa36_37_75}</p>
               <p>{consulta.Placa31_41_71}</p>
               <p>{consulta.Placa46_47_85}</p>
-              <p>TOTAL: {consulta.TotalPlaca}</p>
+              <p><strong>TOTAL:</strong> {consulta.TotalPlaca}</p>
             </div>
 
           </div>
@@ -255,7 +255,7 @@ export default function Consulta() {
               <p>{consulta.Calculo36_37_75}</p>
               <p>{consulta.Calculo31_41_71}</p>
               <p>{consulta.Calculo46_47_85}</p>
-              <p>TOTAL: {consulta.TotalCalculo}</p>
+              <p><strong>TOTAL:</strong> {consulta.TotalCalculo}</p>
             </div>
 
           </div>
@@ -268,7 +268,7 @@ export default function Consulta() {
               <p>{consulta.Gingivitis36_37_75}</p>
               <p>{consulta.Gingivitis31_41_71}</p>
               <p>{consulta.Gingivitis46_47_85}</p>
-              <p>TOTAL: {consulta.TotalGingivitis}</p>
+              <p><strong>TOTAL:</strong> {consulta.TotalGingivitis}</p>
             </div>
           </div>
         </div>
@@ -285,14 +285,14 @@ export default function Consulta() {
             <p>C: {consulta.IndiceC}</p>
             <p>P: {consulta.IndiceP}</p>
             <p>O: {consulta.IndiceO}</p>
-            <p>TOTAL:{consulta.TotalCPO} </p>
+            <p><strong>TOTAL:</strong>{consulta.TotalCPO} </p>
           </div>
           <div class="column">
-            <label><strong>d</strong></label>
+            <label ><strong>d</strong></label>
             <p>c: {consulta.Indicedc}</p>
             <p>e: {consulta.Indicede}</p>
             <p>o: {consulta.Indicedo}</p>
-            <p>TOTAL: {consulta.Totalceo}</p>
+            <p><strong>TOTAL:</strong> {consulta.Totalceo}</p>
           </div>
         </div>
       </div>
@@ -306,11 +306,11 @@ export default function Consulta() {
       <div className="input-group">
         <label htmlFor="Diagnostico"><strong>11. DIAGNÓSTICO</strong></label>
         <input type="text" name="Diagnostico" id="Diagnostico" onChange={handleChange} value={consulta.Diagnostico} readOnly/>
-        <p>CIE: {consulta.Cie}</p>
-        <p>PRE o DEF: {consulta.PreoDef}</p>
+        <p><strong>CIE:</strong> {consulta.Cie}</p>
+        <p><strong>PRE o DEF:</strong> {consulta.PreoDef}</p>
       </div>
       <br></br>
-      <div className="input-group">
+      <div className="column">
         <p><strong>FECHA DE APERTURA:</strong> </p>
         <p><strong>FECHA DE CONTROL:</strong> {consulta.FechaProximaConsulta}</p>
         <p><strong>PROFESIONAL:</strong> DR. ALEXANDER CÁRDENAS </p>
@@ -321,11 +321,11 @@ export default function Consulta() {
       <br></br>
       <div className="input-group">
         <label htmlFor="Tratamientos"><strong>12. TRATAMIENTO</strong></label>
-        <p>FECHA: {consulta.FechaConsulta}</p>
-        <p>DIAGNOSTICOS Y COMPLICACIONES: {consulta.Tratamientos}</p>
-        <p>PROCEDIMIENTOS: {consulta.Procedimientos}</p>
-        <p>PRESCRIPCIONES: {consulta.Prescripcion}</p>
-        <p>CÓDIGO: {consulta.Codigo}</p>
+        <p><strong>FECHA:</strong> {consulta.FechaConsulta}</p>
+        <p><strong>DIAGNOSTICOS Y COMPLICACIONES:</strong> {consulta.Tratamientos}</p>
+        <p><strong>PROCEDIMIENTOS: </strong>{consulta.Procedimientos}</p>
+        <p><strong>PRESCRIPCIONES:</strong> {consulta.Prescripcion}</p>
+        <p><strong>CÓDIGO:</strong> {consulta.Codigo}</p>
       </div>
       
 
