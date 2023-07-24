@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/VerConsulta.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import firma from '../images/firmaAlex.jpg';
 
 export default function Consulta() {
     const { consultaId } = useParams();
@@ -135,9 +136,8 @@ export default function Consulta() {
     <div className="page-container">
       <div className="form-container">
       <form  className="consulta-form">
-      <h2>Ver Consulta</h2>
 
-      <div className="input-group">
+      <div className="column">
         <div className="input-group">
           <p><strong>ESTABLECIMIENTO: </strong> PORTODENT</p>
         </div>
@@ -161,10 +161,10 @@ export default function Consulta() {
         <div className="input-group">
           <p><strong>N° HISTORIAL CLINICO: </strong>{consulta.ID_HistoriaC}</p>
         </div>
-
-        <div className="input-group">
-          <p><strong>CICLO DE VIDA: </strong>{consulta.RangoAños}</p>
-        </div>
+      </div>
+      <br></br>
+      <div className="input-group">
+        <p><strong>CICLO DE VIDA: </strong>{consulta.RangoAños}</p>
       </div>
       <br></br>
       <div className="input-group">
@@ -178,7 +178,7 @@ export default function Consulta() {
       </div>
       <br></br>
       <div className="input-group">
-        <label htmlFor="EnfActual"><strong>3. ANTECEDENTES PERSONALES Y FAMILIARESL</strong></label>
+        <label htmlFor="EnfActual"><strong>3. ANTECEDENTES PERSONALES Y FAMILIARES </strong></label>
         <p>ENFERMEDAD: {consulta.OpcionesAntecedentes}</p>
         <input type="text" name="EnfActual" id="EnfActual" onChange={handleChange} value={consulta.Antecedentes} readOnly/>
       </div>
@@ -272,9 +272,9 @@ export default function Consulta() {
             </div>
           </div>
         </div>
-        <p>ENFERMEDAD PERIODONTAL: {consulta.EnfermedadPerio}</p>
-        <p>MAL OCLUSIÓN: {consulta.MalOclusion}</p>
-        <p>FLUOROSIS: {consulta.Fluorosis}</p>
+        <p><strong>ENFERMEDAD PERIODONTAL:</strong> {consulta.EnfermedadPerio}</p>
+        <p><strong>MAL OCLUSIÓN:</strong> {consulta.MalOclusion}</p>
+        <p><strong>FLUOROSIS:</strong> {consulta.Fluorosis}</p>
       </div>
       <br></br>
       <div className="input-group">
@@ -314,8 +314,10 @@ export default function Consulta() {
         <p><strong>FECHA DE APERTURA:</strong> </p>
         <p><strong>FECHA DE CONTROL:</strong> {consulta.FechaProximaConsulta}</p>
         <p><strong>PROFESIONAL:</strong> DR. ALEXANDER CÁRDENAS </p>
-        <p><strong>CÓDIGO:</strong> 0214512 </p>
-        <p><strong>FIRMA:</strong> </p>
+        <p><strong>CÓDIGO:</strong> 7246R-13-10877  </p>
+        <div className='firma'>
+          <p><strong>FIRMA:<img src={firma}></img></strong> </p>
+        </div>
         <p><strong>NUMERO DE HOJA:</strong> 1</p>
       </div>
       <br></br>
@@ -326,6 +328,10 @@ export default function Consulta() {
         <p><strong>PROCEDIMIENTOS: </strong>{consulta.Procedimientos}</p>
         <p><strong>PRESCRIPCIONES:</strong> {consulta.Prescripcion}</p>
         <p><strong>CÓDIGO:</strong> {consulta.Codigo}</p>
+        <div className='firma'>
+          <p><strong>FIRMA:<img src={firma}></img></strong> </p>
+        </div>
+        
       </div>
       
 

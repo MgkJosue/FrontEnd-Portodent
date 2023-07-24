@@ -120,7 +120,7 @@ function HistorialClinico() {
               <div className="consulta-item" key={consulta.ID_Consulta}>
                 <p>Fecha de la consulta: {consulta.FechaConsulta}</p>
                 <button onClick={() => verConsulta(consulta.ID_Consulta)}>Ver consulta</button>
-                <button onClick={() => handleImprimir(consulta.ID_Consulta)}>Imprimir</button>
+                <button onClick={() => handleImprimir(consulta.ID_Consulta)}>Descargar en Formato.033</button>
               </div>
             )) : (
               <p>No se encontraron consultas asociadas a la fecha {fechaBusqueda}</p>

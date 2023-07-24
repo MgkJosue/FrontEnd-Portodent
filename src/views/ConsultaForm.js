@@ -220,10 +220,10 @@ export default function ConsultaForm() {
             <label htmlFor="10 a 14 años programado">10 - 14 AÑOS PROGRAMADO</label>
             <input type="radio" name="RangoAños" id="15 a 19 años" onChange={handleChange} value="15 a 19 años" required />
             <label htmlFor="15 a 19 años">15 - 19 AÑOS</label>
-            <input type="radio" name="RangoAños" id="mayor de 20 años" onChange={handleChange} value="mayor de 20 años" required />
-            <label htmlFor="mayor de 20 años">MAYOR DE 20 AÑOS</label>
-            <input type="radio" name="RangoAños" id="embarazada" onChange={handleChange} value="embarazada" required />
-            <label htmlFor="embarazada">EMBARAZADA</label>
+            <input type="radio" name="RangoAños" id="Mayor de 20 años" onChange={handleChange} value="Mayor de 20 años" required />
+            <label htmlFor="Mayor de 20 años">MAYOR DE 20 AÑOS</label>
+            <input type="radio" name="RangoAños" id="Embarazada" onChange={handleChange} value="Embarazada" required />
+            <label htmlFor="Embarazada">EMBARAZADA</label>
           </div>
 
         </div>
