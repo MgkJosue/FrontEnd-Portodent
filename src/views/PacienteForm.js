@@ -87,10 +87,10 @@ export default function PacienteForm() {
           </div>
           <label htmlFor="Sexo">Sexo</label>
           <div className="form-control">
-            <input type="radio" name="Sexo" id="M" onChange={handleChange} value="M" required />
-            <label htmlFor="M">Masculino</label>
             <input type="radio" name="Sexo" id="F" onChange={handleChange} value="F" required />
             <label htmlFor="F">Femenino</label>
+            <input type="radio" name="Sexo" id="M" onChange={handleChange} value="M" required />
+            <label htmlFor="M">Masculino</label>
           </div>
           <br></br>
           <div className="input-group">

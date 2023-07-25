@@ -95,14 +95,9 @@ export default function EditarPaciente() {
             <label htmlFor="Cedula">Cédula, Pasaporte, Identificación </label>
             <input type="text" name="Cedula" id="Cedula" onChange={handleChange} value={paciente.Cedula} required />
           </div>
-          <label htmlFor="Sexo">Sexo</label>
-          <div className="form-control">
-            <input type="radio" name="Sexo" id="Masculino" onChange={handleChange} value="Masculino" required />
-            <label htmlFor="Masculino">Masculino</label>
-            <input type="radio" name="Sexo" id="Femenino" onChange={handleChange} value="Femenino" required />
-            <label htmlFor="Femenino">Femenino</label>
+          <div className="input-group">
+            <p>Sexo (M-F): {paciente.Sexo}</p>          
           </div>
-          <br></br>
           <div className="input-group">
             <label htmlFor="FechaNacimiento">Fecha de Nacimiento</label>
             <input type="date" name="FechaNacimiento" id="FechaNacimiento" onChange={handleChange} value={paciente.FechaNacimiento} required />
