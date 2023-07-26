@@ -82,7 +82,8 @@ export default function Consulta() {
     Tratamientos: '',
     Procedimientos: '',
     Prescripcion: '',
-    Codigo:''
+    Codigo:'',
+    Sesion:''
   });
 
   const [paciente, setPaciente] = useState({
@@ -336,6 +337,7 @@ export default function Consulta() {
       <div className="input-group">
         <label htmlFor="Tratamientos"><strong>12. TRATAMIENTO</strong></label>
         <p><strong>FECHA:</strong> {consulta.FechaConsulta}</p>
+        <p><strong>SESION:</strong>{consulta.Sesion}</p>
         <p><strong>DIAGNOSTICOS Y COMPLICACIONES:</strong> {consulta.Tratamientos}</p>
         <p><strong>PROCEDIMIENTOS: </strong>{consulta.Procedimientos}</p>
         <p><strong>PRESCRIPCIONES:</strong> {consulta.Prescripcion}</p>
