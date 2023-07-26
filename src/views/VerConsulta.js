@@ -77,6 +77,7 @@ export default function Consulta() {
     PreoDef:'',
     FechaProximaConsulta:'',
 
+
     FechaConsulta: '',
     Tratamientos: '',
     Procedimientos: '',
@@ -92,6 +93,9 @@ export default function Consulta() {
     FechaNacimiento: '',
     Edad: ''
   });
+  const [historia, setHistoria] = useState({
+    FechaApertura:''
+  });
 
   
   useEffect(() => {
@@ -105,6 +109,14 @@ export default function Consulta() {
         const pacienteResponse = await axios.get(`http://localhost:8000/pacientes/${consulta.ID_HistoriaC}`);
         const paciente = pacienteResponse.data;
         setPaciente(paciente);
+        //obtener datos de la historia clinica
+        const historiaResponse = await axios.get(`http://localhost:8000/historias_clinicas/${consulta.ID_HistoriaC}`);
+        const historia = historiaResponse.data; // Extrae el objeto historia de la respuesta
+        setHistoria(historia); // Configura el estado con el objeto historia
+
+        
+        
+
 
         // Calcular la edad del paciente a partir de la fecha de nacimiento
         const fechaNacimiento = new Date(paciente.FechaNacimiento);
@@ -311,7 +323,7 @@ export default function Consulta() {
       </div>
       <br></br>
       <div className="column">
-        <p><strong>FECHA DE APERTURA:</strong> </p>
+        <p><strong>FECHA DE APERTURA:</strong>{historia.FechaApertura} </p>
         <p><strong>FECHA DE CONTROL:</strong> {consulta.FechaProximaConsulta}</p>
         <p><strong>PROFESIONAL:</strong> DR. ALEXANDER CÁRDENAS </p>
         <p><strong>CÓDIGO:</strong> 7246R-13-10877  </p>
