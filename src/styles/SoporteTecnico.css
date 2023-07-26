@@ -1,25 +1,55 @@
 .soporte-tecnico {
-    margin: 20px;
-  }
-  
-  .soporte-tecnico h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .soporte-tecnico p {
-    color: #666;
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .soporte-tecnico button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+  margin: 20px;
+}
+
+.soporte-tecnico h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.soporte-tecnico p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.soporte-tecnico button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.column {
+  flex: 1;
+  max-width: 500px;
+  padding: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.container-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center the columns horizontally */
+  align-items: start;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.angel {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.josue {
+  width: 225px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
