@@ -30,12 +30,12 @@ export default function PacienteForm() {
         }
         break;
       case 'Cedula':
-        if (/^[a-zA-Z0-9]*$/.test(value)  && value.length <= 20) {
+        if (/^[a-zA-Z0-9]*$/.test(value)  && value.length == 10) {
           setFormData({ ...formData, [name]: value });
         }
         break;
       case 'Telefono':
-        if (/^\d*$/.test(value) && value.length <= 20) {
+        if (/^\d*$/.test(value) && value.length == 10) {
           setFormData({ ...formData, [name]: value });
         }
         break;
