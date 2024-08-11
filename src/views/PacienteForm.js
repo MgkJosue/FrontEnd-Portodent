@@ -1,16 +1,11 @@
 // PacienteForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import '../styles/PacienteForm.css';
 
 
-export default function PacienteForm({ onViewChange }) {
-
-  //
-  const handleViewChange = (view) => {
-    onViewChange(view);
-  };
-
+export default function PacienteForm() {
 
   const [formData, setFormData] = useState({
     Cedula: '',
@@ -23,7 +18,8 @@ export default function PacienteForm({ onViewChange }) {
     Email: ''
   });
 
-  
+  const [showMessage, setShowMessage] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -34,13 +30,29 @@ export default function PacienteForm({ onViewChange }) {
     try {
       const response = await axios.post('http://localhost:8000/pacientes/', formData);
       console.log(response.data);
+
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
+
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <><form onSubmit={handleSubmit} className="paciente-form">
+    <div className="page-container">
+      <div className={`form-container ${showMessage ? 'show-message' : ''}`}>
+      <div className="botones-container">
+        <Link to="/inicio-paciente">
+          <button>ATRAS</button>
+        </Link>
+        <Link to="/">
+          <button>INICIO</button>
+        </Link>
+      </div>
+    <form onSubmit={handleSubmit} className="paciente-form">
       <h2>Registrar Paciente</h2>
       <div className="input-group">
         <label htmlFor="Nombre">Nombres</label>
@@ -54,19 +66,14 @@ export default function PacienteForm({ onViewChange }) {
         <label htmlFor="Cedula">Cedula</label>
         <input type="text" name="Cedula" id="Cedula" onChange={handleChange} value={formData.Cedula} />
       </div>
-
-      
       <label htmlFor="Sexo">Sexo</label>
       <div className="form-control ">
-      <input type="radio" name="Sexo" id="Masculino" onChange={handleChange} value="Masculino" />
-      <label htmlFor="Masculino">Masculino</label>
-      <input type="radio" name="Sexo" id="Femenino" onChange={handleChange} value="Femenino" />
-      <label htmlFor="Femenino">Femenino</label>
+        <input type="radio" name="Sexo" id="Masculino" onChange={handleChange} value="Masculino" />
+        <label htmlFor="Masculino">Masculino</label>
+        <input type="radio" name="Sexo" id="Femenino" onChange={handleChange} value="Femenino" />
+        <label htmlFor="Femenino">Femenino</label>
       </div>
       <br></br>
-
-
-
       <div className="input-group">
         <label htmlFor="FechaNacimiento">Fecha de Nacimiento</label>
         <input type="date" name="FechaNacimiento" id="FechaNacimiento" onChange={handleChange} value={formData.FechaNacimiento} />
@@ -85,12 +92,15 @@ export default function PacienteForm({ onViewChange }) {
       </div>
       <button type="submit">Enviar</button>
 
-    </form><button onClick={() => handleViewChange('principal')}>REGRESAR</button></>
-  );
+    </form>
 
-  
+    </div>
+      {showMessage && (
+        <div className="message-popup">
+          <p><strong>SE GUARDÓ CORRECTAMENTE EL PACIENTE</strong></p>
+        </div>
+      )}
+    </div>
+  ); 
 }
-
-
-
 

@@ -2,13 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/HistoriaClinica.css';
+import { Link } from 'react-router-dom';
 
-export default function HistoriaClinicaForm({ onViewChange }) {
 
-  //
-  const handleViewChange = (view) => {
-    onViewChange(view);
-  };
+export default function HistoriaClinicaForm() {
+
 
   const [formData, setFormData] = useState({
     ID_Paciente: '',
@@ -37,6 +35,8 @@ export default function HistoriaClinicaForm({ onViewChange }) {
       </div>
       <button type="submit">Enviar</button>
 
-    </form><button onClick={() => handleViewChange('principal')}>REGRESAR</button></>
+    </form>
+    <Link to="/"><button>INICIO</button></Link>
+    </>
   );
 }

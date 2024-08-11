@@ -6,6 +6,8 @@ import ConsultaForm from './views/ConsultaForm.js';
 import Principal from './views/Principal.js';
 import SoporteTecnico from './views/SoporteTecnico.js';
 import BuscarPaciente from './views/BuscarPaciente.js';
+import InicioPaciente from './views/InicioPaciente.js';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path="/buscar-paciente" element={<BuscarPaciente />} />
         <Route path="/consulta-form" element={<ConsultaForm />} />
         <Route path="/soporte-tecnico" element={<SoporteTecnico />} />
+        <Route path="/inicio-paciente" element={<InicioPaciente />} />
       </Routes>
     </Router>
   );
